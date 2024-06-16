@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;700&family=Orbitron:wght@400..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Orbitron", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+button {
+    font-family: "Orbitron", sans-serif;
+}
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#calculator {
+    width: 50%;
+    height: 50%;
+}
+#display {
+    background: rgb(96, 196, 96);
+    font-size: 30px;
+    padding: 10px 15px;
+    height: 20%;
+}
+#buttons {
+    background: rgb(105,103,200);
+    display: grid;
+    grid-template-columns: 80% 20%;
+    padding: 10px 5px;
+    height: 80%;
+}
+#buttons .numbers {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    text-align: center;
+}
+#buttons .operators {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+/*#buttons {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    padding: 10px 5px;
+}
+#buttons .numbers {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    & buttons {
+        text-align: center;
+    }
+}
+#buttons .operators {
+    display: grid;
+    grid-template-columns: 100%;
+} */
