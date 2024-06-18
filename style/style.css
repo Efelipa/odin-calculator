@@ -2,61 +2,71 @@
 
 * {
     box-sizing: border-box;
+    font-family: "Orbitron", sans-serif;
 }
 body {
-    font-family: "Orbitron", sans-serif;
     margin: 0;
     padding: 0;
 }
-button {
-    font-family: "Orbitron", sans-serif;
-}
 .container {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 #calculator {
-    width: 50%;
-    height: 50%;
+    background: rgb(131, 131, 134);
+    border-radius: 5px;
+    padding: 10px;
+    height: 500px;
 }
 #display {
     background: rgb(96, 196, 96);
-    font-size: 30px;
-    padding: 10px 15px;
+    border: 2px solid rgb(26, 94, 26);
+    padding: 10px;
     height: 20%;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 #buttons {
-    background: rgb(105,103,200);
-    display: grid;
-    grid-template-columns: 80% 20%;
-    padding: 10px 5px;
+    display: flex;
     height: 80%;
 }
-#buttons .numbers {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    text-align: center;
+.numbers {
+    flex-basis: calc(80%);
+    display: flex;
+    flex-flow: wrap;
 }
-#buttons .operators {
-    display: grid;
-    grid-template-columns: 100%;
+.numbers .op-numbers {
+    background: rgb(50, 40, 200);
+}
+.numbers > button {
+    background: rgb(20, 200, 170);
+    color: white;
+    flex-basis: calc(100% / 3);
+    font-weight: 800;
+}
+.numbers > button:hover {
+    opacity: .8;
+}
+.numbers > .zero-button {
+    flex-basis: calc(100% / 1.5);
+}
+.operators {
+    flex-basis: calc(20%);
+    display: flex;
+    flex-flow: nowrap column;
+}
+.operators > button {
+    background: rgb(240, 167, 9);
+    border-radius: 5px;
+    color: white;
+    font-weight: 800;
+    flex-basis: calc(100%);
+}
+.operators > button:hover {
+    opacity: .8;
 }
 
-/*#buttons {
-    display: grid;
-    grid-template-columns: 80% 20%;
-    padding: 10px 5px;
-}
-#buttons .numbers {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    & buttons {
-        text-align: center;
-    }
-}
-#buttons .operators {
-    display: grid;
-    grid-template-columns: 100%;
-} */

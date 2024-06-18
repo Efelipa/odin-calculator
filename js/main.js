@@ -1,6 +1,5 @@
-let operator = prompt('Que tipo de operación se realizará?');
-let num1 = parseInt(prompt('Primer número:'));
-let num2 = parseInt(prompt('Segundo número:'));
+const display = document.querySelector('#display');
+console.log(display.textContent);
 
 const operate = (num1, num2, operator) => {
     if(operator === 'add') {
