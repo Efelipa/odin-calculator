@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Set the base values
     const display = document.querySelector('#display');
-    const buttonsCalculator = document.querySelectorAll('.numbers button[value]')
+    const buttonsCalculator = document.querySelectorAll('.numbers button')
     const operatorsCalculator = document.querySelectorAll('.operators button');
     // Turn the NodeList into an array
     const buttons = [...buttonsCalculator];
@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const operate = (operator,num1, num2) => {
         switch (operator) {
             case '+':
-                return add(num1, num2);
+                return operations.add(num1, num2);
             case '-':
-                return subtract(num1, num2);
+                return operations.subtract(num1, num2);
             case '*':
-                return multiply(num1, num2);
+                return operations.multiply(num1, num2);
             case '/':
-                return divide(num1, num2);
+                return operations.  divide(num1, num2);
             default:
                 break;
         }
@@ -79,14 +79,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     buttons.forEach(button => {
         button.addEventListener('click', (e) =>{
-            let target = e.target;
-            return addNumber(target.textContent);
+            let target = e.target;              
+            if(target.textContent === 'AC') {
+                num1 = '';
+                num2 = '';
+                operator = '';
+                sum = '';
+                display.textContent = '0';
+                console.log(num1, num2, operator, sum);
+            } else {
+                return addNumber(target.textContent);
+            }
         });
     })
-    operators.forEach(operator => {
-        operator.addEventListener('click', (e) =>{
+    operators.forEach(op => {
+        op.addEventListener('click', (e) =>{
             let target = e.target;
-            console.log(target.textContent)
+            switch (target.textContent) {
+                case '/':
+                    return [getOperators('/')];
+                case '*':
+                    return getOperators('*');
+                case '+':
+                    return [getOperators('+')];
+                case '-':
+                    return [getOperators('-')];
+                case '=':
+                    console.log('equal')
+                    console.log(sum)
+                    if(sum === '') {
+                        let newNum1 = parseInt(num1);
+                        let newNum2 = parseInt(num2);
+                        num1 = '';
+                        num2 = '';
+                        sum = operate(operator, newNum1, newNum2);
+                        display.textContent = sum;
+                        operator = '';
+                    }
+                default:
+                    break;
+            }
         })
     })
 })
