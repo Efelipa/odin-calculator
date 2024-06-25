@@ -5,37 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="preload" href="style/style.css">
+    <link rel="preload" href="style/style.css" as="style">
 </head>
 <body>
     <main class="container">
         <section id="calculator">
             <div id="display">
-                0
+                
             </div>
             <div id="buttons">
                 <div class="numbers">
-                    <button class="op-numbers">AC</button>
-                    <button class="op-numbers">+/-</button>
-                    <button class="op-numbers">%</button>
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button class="zero-button">0</button>
-                    <button>.</button>
+                    <button class="button-number op-numbers" id="negative-positive">+/-</button>
+                    <button class="button-number op-numbers" id="clear">AC</button>
+                    <button class="button-number op-numbers" id="to-percentage">%</button>
+                    <button class="button-number" value="7" data-key="55">7</button>
+                    <button class="button-number" value="8" data-key="56">8</button>
+                    <button class="button-number" value="9" data-key="57">9</button>
+                    <button class="button-number" value="4" data-key="52">4</button>
+                    <button class="button-number" value="5" data-key="53">5</button>
+                    <button class="button-number" value="6" data-key="54">6</button>
+                    <button class="button-number" value="1" data-key="49">1</button>
+                    <button class="button-number" value="2" data-key="50">2</button>
+                    <button class="button-number" value="3" data-key="51">3</button>
+                    <button class="zero-button button-number" data-key="48" value="0">0</button>
+                    <button class="button-number" id="decimal">.</button>
                 </div>
                 <div class="operators">
-                    <button>/</button>
-                    <button>*</button>
-                    <button>-</button>
-                    <button>+</button>
-                    <button>=</button>
+                    <button data-key="111">/</button>
+                    <button data-key="106">*</button>
+                    <button data-key="109">-</button>
+                    <button data-key="107">+</button>
+                    <button data-key="13">=</button>
                 </div>
             </div>
         </section>
