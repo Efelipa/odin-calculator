@@ -11,7 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
         add: (num1, num2) => num1 + num2,
         subtract: (num1, num2) => num1 - num2,
         multiply: (num1, num2) => num1 * num2,
-        divide: (num1, num2) => num1 / num2,
+        divide: (num1, num2) => {
+            if(num1 === 0 || num2 === 0) {
+                return 'Cannot divide by zero';
+            } else {
+                return num1 / num2;
+            }
+        },
     }
 
     const operate = (operator,num1, num2) => {
@@ -43,9 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
             num2 += num.substring(0,9);
             display.textContent = num2;
         }
-        console.log(num1);
-        console.log(num2);
-        
     }
 
     const getOperators = (symbol) => {
@@ -86,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 operator = '';
                 sum = '';
                 display.textContent = '0';
-                console.log(num1, num2, operator, sum);
             } else {
                 return addNumber(target.textContent);
             }
@@ -105,20 +107,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 case '-':
                     return [getOperators('-')];
                 case '=':
-                    console.log('equal')
-                    console.log(sum)
                     if(sum === '') {
                         let newNum1 = parseInt(num1);
                         let newNum2 = parseInt(num2);
                         num1 = '';
                         num2 = '';
                         sum = operate(operator, newNum1, newNum2);
-                        display.textContent = sum;
+                        (sum === NaN) ? display.textContent = 'ERROR' : display.textContent = sum;
                         operator = '';
-                    }
+                    } else if (sum !== '' && operator.length === 1) {
+                        let newNum1 = parseInt(num1);
+                        num1 = '';
+                        sum = operate(operator, num1, sum);
+                        operator = '';
+                        display.textContent = sum;
+                    } else if (operator.length > 1) {
+                        let newNum1 = parseInt(num1);
+                        sum = operate(operator[operator.length - 1], sum, newNum1);
+                        display.textContent = sum;
+                    } else if (operator === '' || num2 === '' || sum === '' || num1 === '') {
+                        display.textContent = 'ERROR';
+                        num1 = '';
+                        num2 = '';
+                        operator = '';
+                        sum = '';
+                    } 
                 default:
                     break;
             }
         })
     })
+
 })
